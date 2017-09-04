@@ -1,0 +1,42 @@
+{
+  "name": "react-express-browserify-starter",
+  "version": "1.0.0",
+  "description": "React and Express starter.",
+  "main": "server/index.js",
+  "scripts": {
+    "bundle": "browserify -t babelify ./client/index.js -g [ envify --NODE_ENV production ] -g uglifyify -p bundle-collapser/plugin | uglifyjs --compress --mangle > ./server/public/bundle.js",
+    "watch:client": "watchify client/index.js -v -o server/public/bundle.js -t babelify",
+    "watch:server": "nodemon server/index.js --ignore server/public/**",
+    "watch": "run-p watch:client watch:server",
+    "start:server": "node server/index.js",
+    "start": "run-s bundle start:server"
+  },
+  "keywords": [],
+  "author": "Victor Mejia",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "bundle-collapser": "^1.3.0",
+    "chai": "^4.1.0",
+    "envify": "^4.1.0",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "uglify-js": "^3.0.28",
+    "uglifyify": "^4.0.3",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.6",
+    "redux": "^3.6.0"
+  }
+}
