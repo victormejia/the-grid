@@ -1,15 +1,14 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-const path = require('path')
-const app = express()
+const MongoClient = require('mongodb').MongoClient
+const createApp = require('./create-app')
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(bodyParser.json())
+require('dotenv').config()
 
-app.get('/dummy', (req, res) => {
-  res.json({ data: 'it works!' })
-})
+MongoClient.connect(process.env.DB_CONNECTION, (err, db) => {
+  console.log('connected to mongodb...')
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('server started...')
+  createApp(db)
+    .listen(process.env.PORT || 3000, () => {
+      console.log('server started...')
+    })
 })
