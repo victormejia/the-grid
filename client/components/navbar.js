@@ -7,6 +7,7 @@ const Header = styled.header`
   position: fixed;
   top: 0px;
   width: 100%;
+  z-index: 1;
 `
 
 const Title = styled.h2`

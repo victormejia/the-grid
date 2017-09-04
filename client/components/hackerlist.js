@@ -1,4 +1,5 @@
 import React from 'react'
+import Status from './status'
 
 const HackerList = (props) => {
 
@@ -19,7 +20,9 @@ const HackerList = (props) => {
         {
           props.hackers.map(hacker => (
             <tr key={hacker._id}>
-              <td>{hacker.status}</td>
+              <td>
+                <Status status={hacker.status}></Status>
+              </td>
               <td>{hacker.name}</td>
               <td>{hacker.specialty}</td>
               <td>{hacker.address}</td>
