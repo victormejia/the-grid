@@ -4,6 +4,7 @@
   "description": "React and Express starter.",
   "main": "server/index.js",
   "scripts": {
+    "seed": "node server/sample/seed.js",
     "bundle": "browserify -t babelify ./client/index.js -g [ envify --NODE_ENV production ] -g uglifyify -p bundle-collapser/plugin | uglifyjs --compress --mangle > ./server/public/bundle.js",
     "watch:client": "watchify client/index.js -v -o server/public/bundle.js -t babelify",
     "watch:server": "nodemon server/index.js --ignore server/public/**",
@@ -33,7 +34,9 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "mongodb": "^2.2.31",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.6",
