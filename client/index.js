@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import NavBar from './components/navbar'
 import HackerList from './components/hackerlist'
+import Search from './components/search'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -19,8 +20,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/hackers')
-      .then(response => this.setState({ hackers: response.data }))
+    this.search()
+  }
+
+  search(token) {
+    axios.get(`/api/hackers?term=${token || ''}`)
+    .then(response => this.setState({ hackers: response.data }))
   }
 
   render() {
@@ -28,6 +33,7 @@ class App extends React.Component {
       <div>
         <NavBar />
         <Container>
+          <Search onNewSearch={this.search.bind(this)} />
           <HackerList hackers={this.state.hackers} />
         </Container>
       </div>
