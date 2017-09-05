@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const MongoClient = require('mongodb').MongoClient
-
 const hackers = require('./hackers')
 
 function seedCollection(collectionName, initialRecords) {

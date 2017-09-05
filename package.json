@@ -10,7 +10,8 @@
     "watch:server": "nodemon server/index.js --ignore server/public/**",
     "watch": "run-p watch:client watch:server",
     "start:server": "node server/index.js",
-    "start": "run-s bundle start:server"
+    "start": "run-s bundle start:server",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "Victor Mejia",
@@ -25,6 +26,7 @@
     "bundle-collapser": "^1.3.0",
     "chai": "^4.1.0",
     "envify": "^4.1.0",
+    "jest": "^21.0.1",
     "mocha": "^3.5.0",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",

@@ -1,5 +1,6 @@
 import React from 'react'
 import Status from './status'
+import { datetimeParse } from '../datetime-parse'
 
 const HackerList = (props) => {
 
@@ -27,7 +28,7 @@ const HackerList = (props) => {
               <td>{hacker.specialty}</td>
               <td>{hacker.address}</td>
               <td>{hacker.phone}</td>
-              <td>{hacker.dob}</td>
+              <td>{datetimeParse(hacker.dob)}</td>
               <td>{hacker.statusMessage}</td>
             </tr>
           ))
